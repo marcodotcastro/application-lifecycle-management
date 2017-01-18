@@ -1,0 +1,73 @@
+version: '2'
+
+networks:
+  prodnetwork:
+    driver: bridge
+
+services:
+ nexus:
+  build: ./nexus
+  ports:
+    - "18081:8081"
+  networks:
+    - prodnetwork
+
+ jenkins:
+  build: ./jenkins
+  ports:
+    - "18080:8080"
+  networks:
+    - prodnetwork
+  volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
+    - /usr/local/bin/docker:/usr/bin/docker
+    - /opt/jenkins/:/var/lib/jenkins/
+  depends_on:
+    - nexus
+    - gitlab
+    - sonar
+  environment:
+    - NEXUS_PORT=8081
+    - SONAR_PORT=9000
+    - SONAR_DB_PORT=5432
+
+ sonar:
+  build: ./sonar
+  ports:
+   - "19000:9000"
+   - "5432:5432"
+  networks:
+    - prodnetwork
+  depends_on:
+    - sonardb
+  environment:
+   - SONARQUBE_JDBC_URL=jdbc:postgresql://sonardb:5432/sonar
+   - SONARQUBE_JDBC_USERNAME=sonar
+   - SONARQUBE_JDBC_PASSWORD=sonar
+ sonardb:
+  networks:
+    - prodnetwork
+  image: postgres
+  environment:
+   - POSTGRES_USER=sonar
+   - POSTGRES_PASSWORD=sonar
+  volumes:
+    - /opt/postgres/data:/var/lib/postgresql/data
+
+ gitlab:
+  image: gitlab/gitlab-ce:8.14.4-ce.0
+  restart: always
+  networks:
+    - prodnetwork
+  environment:
+    GITLAB_OMNIBUS_CONFIG: |
+      # external_url 'https://gitlab.example.com'
+      # Add any other gitlab.rb configuration here, each on its own line
+  ports:
+    - "80:80"
+    - "443:443"
+    - "2222:22"
+  volumes:
+    - /opt/gitlab/config:/etc/gitlab
+    - /opt/gitlab/logs:/var/log/gitlab
+    - /opt/gitlab/data:/var/opt/gitlab

@@ -1,0 +1,31 @@
+version: '2'
+
+networks:
+  prodnetwork:
+    driver: bridge
+
+services:
+  redmine:
+    image: redmine:3.1.7
+    ports:
+      - 13000:3000
+    environment:
+      POSTGRES_PASSWORD: "redmine"
+      POSTGRES_USER: redmine
+      REDMINE_DB_POSTGRES: redmine_production
+    networks:
+      - prodnetwork
+    depends_on:
+      - redminedb
+    restart: always
+
+  redminedb:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: "redmine"
+      POSTGRES_USER: redmine
+    volumes:
+      - /opt/redmine/data:/var/lib/redmine/data
+    networks:
+      - prodnetwork
+    restart: always
