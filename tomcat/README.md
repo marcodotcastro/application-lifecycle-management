@@ -3,7 +3,7 @@
 Usage:
 ```
 $ docker build -t tomcat .
-$ docker run -d -p=8080:8080 tomcat
+$ docker run -d -p=18888:8080 tomcat
 ```
 
-Once Redmine is up and running go to http://localhost:8080
+Once Redmine is up and running go to http://localhost:18888

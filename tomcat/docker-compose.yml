@@ -1,0 +1,14 @@
+version: '2'
+
+networks:
+  prodnetwork:
+    driver: bridge
+
+services:
+  tomcat:
+    build: .
+    ports:
+      - 18888:8080
+    networks:
+      - prodnetwork
+    restart: always
