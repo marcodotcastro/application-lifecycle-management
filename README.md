@@ -24,3 +24,17 @@ docker-compose up
 | SonarQube | http://${docker-machine ip default}:19000/ | admin/admin |
 | Nexus | http://${docker-machine ip default}:18081/nexus | admin/admin123 |
 | GitLab | http://${docker-machine ip default}/ | root/5iveL!fe |
+
+
+
+## Docker command
+
+#### Delete all images
+
+docker stop $(docker ps -a -q)
+
+docker rm $(docker ps -a -q)
+
+#### Delete all images
+
+docker rmi $(docker images -q)
