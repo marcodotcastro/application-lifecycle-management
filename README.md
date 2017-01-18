@@ -29,12 +29,18 @@ docker-compose up
 
 ## Docker command
 
-#### Delete all images
-
+#### Containers
+##### Stop all
+```
 docker stop $(docker ps -a -q)
 
+```
+##### Remove all
 docker rm $(docker ps -a -q)
+```
 
-#### Delete all images
-
+#### Images
+##### Remove all
+```
 docker rmi $(docker images -q)
+```
