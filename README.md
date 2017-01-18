@@ -16,7 +16,7 @@ docker-compose up
 
 ## Access Tools
 
-#### With docker machine
+#### Only ALM
 
 | *Tool* | *Link* | *Credentials* |
 | ------------- | ------------- | ------------- |
@@ -24,7 +24,19 @@ docker-compose up
 | Jenkins | http://${docker-machine ip default}:18080/ | no login required |
 | SonarQube | http://${docker-machine ip default}:19000/ | admin/admin |
 | Nexus | http://${docker-machine ip default}:18081/nexus | admin/admin123 |
-| GitLab | http://${docker-machine ip default}/ | root/5iveL!fe |
+| GitLab | http://${docker-machine ip default}/ | no login required |
+
+#### With APP
+
+| *Tool* | *Link* | *Credentials* |
+| ------------- | ------------- | ------------- |
+| Redmine | http://${docker-machine ip default}:13000/ | admin/admin |
+| Jenkins | http://${docker-machine ip default}:18080/ | no login required |
+| SonarQube | http://${docker-machine ip default}:19000/ | admin/admin |
+| Nexus | http://${docker-machine ip default}:18081/nexus | admin/admin123 |
+| GitLab | http://${docker-machine ip default}/ | no login required |
+| Tomcat | http://${docker-machine ip default}:8080/ | admin/admin |
+| App Java | http://${docker-machine ip default}:8080/sample | admin/admin |
 
 
 
