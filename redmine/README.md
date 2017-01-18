@@ -2,8 +2,8 @@
 
 Usage:
 ```
-$ docker build -t jenkins .
-$ docker run -d -p=8080:8080 jenkins
+$ docker build -t redmine .
+$ docker run -d -p=3000:3000 redmine
 ```
 
-Once Redmine is up and running go to http://192.168.59.103:8080
+Once Redmine is up and running go to http://localhost:3000
