@@ -5,27 +5,28 @@ networks:
     driver: bridge
 
 services:
+  redminedb:
+    image: mariadb
+    environment:
+      MYSQL_ROOT_PASSWORD: "redmine"
+      MYSQL_DATABASE: redmine
+    volumes:
+      - /opt/redmine/data:/var/lib/redmine/data
+    networks:
+      - prodnetwork
+    restart: always
+
   redmine:
     image: redmine:3.1.7
     ports:
       - 13000:3000
     environment:
-      POSTGRES_PASSWORD: "redmine"
-      POSTGRES_USER: redmine
-      REDMINE_DB_POSTGRES: redmine_production
+      REDMINE_DB_MYSQL: redminedb
+      REDMINE_DB_PASSWORD: redmine
     networks:
       - prodnetwork
     depends_on:
       - redminedb
     restart: always
 
-  redminedb:
-    image: postgres
-    environment:
-      POSTGRES_PASSWORD: "redmine"
-      POSTGRES_USER: redmine
-    volumes:
-      - /opt/redmine/data:/var/lib/redmine/data
-    networks:
-      - prodnetwork
-    restart: always
+ 
