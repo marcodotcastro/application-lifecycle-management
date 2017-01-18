@@ -20,6 +20,7 @@ docker-compose up
 
 | *Tool* | *Link* | *Credentials* |
 | ------------- | ------------- | ------------- |
+| Redmine | http://${docker-machine ip default}:13000/ | admin/admin |
 | Jenkins | http://${docker-machine ip default}:18080/ | no login required |
 | SonarQube | http://${docker-machine ip default}:19000/ | admin/admin |
 | Nexus | http://${docker-machine ip default}:18081/nexus | admin/admin123 |

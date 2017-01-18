@@ -4,7 +4,7 @@
 
 FROM centos:7
 
-MAINTAINER Marcel Birkner <marcel.birkner@codecentric.de>
+MAINTAINER Marco Castro
 
 ENV JAVA_OPTS "$JAVA_OPTS -Duser.country=DE -Duser.language=de -Duser.timezone=Europe/Berlin"
 

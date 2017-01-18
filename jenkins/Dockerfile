@@ -1,5 +1,7 @@
 FROM jenkins:2.19.4
 
+MAINTAINER Marco Castro
+
 USER root
 RUN apt-get update \
       && apt-get install -y sudo curl\
