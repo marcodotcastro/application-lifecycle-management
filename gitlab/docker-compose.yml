@@ -1,0 +1,24 @@
+version: '2'
+
+networks:
+  prodnetwork:
+    driver: bridge
+
+services:
+  gitlab:
+    build: .
+    ports:
+      - "80:80"
+      - "443:443"
+      - "2222:22"
+    volumes:
+      - /opt/gitlab/config:/etc/gitlab
+      - /opt/gitlab/logs:/var/log/gitlab
+      - /opt/gitlab/data:/var/opt/gitlab
+    restart: always
+    networks:
+      - prodnetwork
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        # external_url 'https://gitlab.example.com'
+        # Add any other gitlab.rb configuration here, each on its own line

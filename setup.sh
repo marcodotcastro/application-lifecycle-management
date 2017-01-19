@@ -6,8 +6,8 @@
 # - Git version 2.7.4
 
 echo "Checkout Git Repository"
-git clone git@github.com:marcodotcastro/alm-opensource-stack-docker.git
-cd alm-opensource-stack-docker
+git clone git@github.com:marcodotcastro/alm_docker.git
+cd alm_docker
 
 echo "Startup Docker Compose"
 docker-compose up
