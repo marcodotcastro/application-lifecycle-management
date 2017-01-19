@@ -8,10 +8,7 @@ services:
   tomcat:
     build: .
     ports:
-      - 18888:8080
-    volumes:  
-      - /opt/tomcat:/sonatype-work
-    networks:
+      - 18080:8080
     networks:
       - prodnetwork
     restart: always
