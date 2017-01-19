@@ -5,7 +5,7 @@ networks:
     driver: bridge
 
 services:
-  tomcat:
+  nexus:
     build: .
     ports:
       - 18081:8081
