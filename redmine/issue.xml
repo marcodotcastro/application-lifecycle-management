@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<issue>
+  <subject>Remove link servlet</subject>
+  <project_id>6</project_id>
+  <tracker_id>2</tracker_id>
+  <custom_fields type="array">
+    <custom_field>
+      <id>2</id>
+      <value>Fixed</value>
+    </custom_field>
+    <custom_field>
+      <id>1</id>
+      <value>0.8.2</value>
+    </custom_field>
+  </custom_fields>
+</issue>

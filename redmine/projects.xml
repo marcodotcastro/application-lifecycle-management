@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<project>
+	<id>1</id>
+	<name>Sample</name>
+	<identifier>sample</identifier>
+	<enabled_module_names>time_tracking</enabled_module_names>
+	<enabled_module_names>issue_tracking</enabled_module_names>
+</project>
