@@ -11,6 +11,7 @@ services:
       - "18888:8080"
     volumes:  
       - /opt/tomcat:/sonatype-work
+      - /opt/tomcat/webapps:/usr/local/tomcat/webapps
     networks:
     networks:
       - prodnetwork
