@@ -16,6 +16,7 @@ docker-commons:1.4.0
 external-monitor-job:1.6
 git:2.5.3
 git-client:1.21.0
+gitlab-plugin:1.4.4
 github:1.21.1
 github-api:1.77
 groovy:1.29
