@@ -50,6 +50,17 @@
     </hudson.tasks.Maven>
   </builders>
   <publishers>
+    <hudson.plugins.sonar.SonarPublisher plugin="sonar@2.5">
+      <jdk>JDK 8</jdk>
+      <branch></branch>
+      <mavenOpts></mavenOpts>
+      <jobAdditionalProperties></jobAdditionalProperties>
+      <mavenInstallationName>Maven 3.3.3</mavenInstallationName>
+      <rootPom></rootPom>
+      <settings class="jenkins.mvn.DefaultSettingsProvider"/>
+      <globalSettings class="jenkins.mvn.DefaultGlobalSettingsProvider"/>
+      <usePrivateRepository>false</usePrivateRepository>
+    </hudson.plugins.sonar.SonarPublisher>
     <hudson.plugins.deploy.DeployPublisher plugin="deploy@1.10">
       <adapters>
         <hudson.plugins.deploy.tomcat.Tomcat7xAdapter>
