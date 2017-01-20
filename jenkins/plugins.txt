@@ -48,3 +48,4 @@ workflow-step-api:2.3
 ws-cleanup:0.30
 xunit:1.102
 xvfb:1.1.3
+capitomcat:0.1.0
