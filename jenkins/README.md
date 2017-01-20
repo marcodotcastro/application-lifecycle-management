@@ -3,29 +3,70 @@
 Usage:
 ```
 $ docker build -t jenkins .
-$ docker run -d -p=8080:8080 jenkins
+$ docker run -d -p=:18080:8080 jenkins
 ```
 
-Once Jenkins is up and running go to http://192.168.59.103:8080
+Configuration:
 
-## Update Plugins
+1 Job
+1.1 Gitlab
 
-Install and update all plugins via the Jenkins Plugin Manager.
-* http://<jenkins-url:port>/pluginManager/
+Source Code Management > Git
+Repositories
+	Repository URL: git@gitlab:root/sample.git
+	Credentials > Add > Jenkins > Kind > SSH Username with private key > Private Key > Enter directly
+		Key: https://github.com/marcodotcastro/alm_docker/blob/master/jenkins/config/ssh-keys/cd-demo
+Branches to build
+	Branch Specifier (blank for 'any'): */master
+Repository browser: gitlab
+	URL: http://gitlab/root/sample
+	Version: 3.1
 
-After that use the Script Console to output all plugins including the version in the correct format for the **plugin.txt**.
-* http://<jenkins-url:port>/script
+1.2 Sonar
 
-```shell
-def plugins = jenkins.model.Jenkins.instance.pluginManager.plugins
-plugins.sort{it}
-plugins.each {
-  println it.shortName + ':' + it.getVersion()
-}
-```
+Post-build Actions > SonarQube analysis with Maven
+JDK: JDK 8
+Maven Version: Maven 3.3.3
+Root POM: pom.xml
 
-More example scripts can be found in the **groovy** folder.
+1.3 Tomcat
 
-### Links
+Post-build Actions > Deploy war/ear to a container
+WAR/EAR files: target/sample.war
+Container > Tomcat 7.x
+Manager user name: admin
+Manager password: abc12345
+Tomcat URL: http://tomcat:8080
 
-- Job DSL API https://jenkinsci.github.io/job-dsl-plugin/
+2 Jenkins
+
+2.1 Gitlab
+
+Manage Jenkins > Configure System > Gitlab > GitLab connections
+Connection name: gitlab
+Gitlab host URL: http://gitlab/
+Credentials > Add > Jenkins > Kind > GitLab API token
+API Token: fbUVXAPjsny3DAHqz7_-
+
+2.2 Sonar
+
+Manage Jenkins > Configure System > SonarQube servers > SonarQube installations
+
+Name: sonar
+Server URL: http://sonar:9000
+Server version: 5.3 or Higher
+Server authentication token: 4.1
+
+3 Gitlab
+
+3.1 Public Key
+
+PROJECT_NAME > Configurations > Deploy Keys 
+https://github.com/marcodotcastro/alm_docker/blob/master/jenkins/config/ssh-keys/cd-demo.pub
+
+
+
+4 Sonar 
+
+4.1 Generate Token User Admin
+Security > User > USER_NAME > Tokens
