@@ -3,29 +3,18 @@
 Usage:
 ```
 $ docker build -t jenkins .
-$ docker run -d -p=8080:8080 jenkins
+$ docker run -d -p=:18080:8080 jenkins
 ```
 
-Once Jenkins is up and running go to http://192.168.59.103:8080
 
-## Update Plugins
+Configuration:
 
-Install and update all plugins via the Jenkins Plugin Manager.
-* http://<jenkins-url:port>/pluginManager/
+sample job
 
-After that use the Script Console to output all plugins including the version in the correct format for the **plugin.txt**.
-* http://<jenkins-url:port>/script
+private key
+https://github.com/marcodotcastro/alm_docker/blob/master/jenkins/config/ssh-keys/cd-demo
 
-```shell
-def plugins = jenkins.model.Jenkins.instance.pluginManager.plugins
-plugins.sort{it}
-plugins.each {
-  println it.shortName + ':' + it.getVersion()
-}
-```
+sample project gitlab
 
-More example scripts can be found in the **groovy** folder.
-
-### Links
-
-- Job DSL API https://jenkinsci.github.io/job-dsl-plugin/
+public key
+https://github.com/marcodotcastro/alm_docker/blob/master/jenkins/config/ssh-keys/cd-demo.pub

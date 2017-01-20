@@ -1,4 +1,4 @@
 ## Sample App Java
 
 
-Once Redmine is up and running go to http://localhost:8080/sample
+Once Redmine is up and running go to http://localhost:18888/sample
