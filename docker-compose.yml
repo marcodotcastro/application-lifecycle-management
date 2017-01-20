@@ -5,35 +5,48 @@ networks:
     driver: bridge
 
 services:
- jenkins:
-  build: ./jenkins
-  ports:
-    - "18080:8080"
-  networks:
-    - prodnetwork
-  volumes:
-    - /opt/jenkins/:/var/lib/jenkins/
-  depends_on:
-    - gitlab
-  environment:
-    - NEXUS_PORT=8081
-    - SONAR_PORT=9000
-    - SONAR_DB_PORT=5432
+  jenkins:
+    build: ./jenkins
+    ports:
+      - "18080:8080"
+    networks:
+      - prodnetwork
+    volumes:
+      - /opt/jenkins/:/var/lib/jenkins/
+    depends_on:
+      - gitlab
+      - tomcat
+    environment:
+      - NEXUS_PORT=8081
+      - SONAR_PORT=9000
+      - SONAR_DB_PORT=5432
 
- gitlab:
-  build: ./gitlab
-  restart: always
-  networks:
-    - prodnetwork
-  environment:
-    GITLAB_OMNIBUS_CONFIG: |
-      # external_url 'https://gitlab.example.com'
-      # Add any other gitlab.rb configuration here, each on its own line
-  ports:
-    - "80:80"
-    - "443:443"
-    - "2222:22"
-  volumes:
-    - /opt/gitlab/config:/etc/gitlab
-    - /opt/gitlab/logs:/var/log/gitlab
-    - /opt/gitlab/data:/var/opt/gitlab
+  gitlab:
+    build: ./gitlab
+    restart: always
+    networks:
+      - prodnetwork
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        # external_url 'https://gitlab.example.com'
+        # Add any other gitlab.rb configuration here, each on its own line
+    ports:
+      - "80:80"
+      - "443:443"
+      - "2222:22"
+    volumes:
+      - /opt/gitlab/config:/etc/gitlab
+      - /opt/gitlab/logs:/var/log/gitlab
+      - /opt/gitlab/data:/var/opt/gitlab
+  
+  tomcat:
+    build: ./tomcat
+    ports:
+      - "18888:8080"
+    volumes:  
+      - /opt/tomcat:/sonatype-work
+      - /opt/tomcat/webapps:/usr/local/tomcat/webapps
+    networks:
+    networks:
+      - prodnetwork
+    restart: always
