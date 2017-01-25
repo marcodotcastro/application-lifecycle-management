@@ -68,7 +68,7 @@ services:
         # external_url 'https://gitlab.example.com'
         # Add any other gitlab.rb configuration here, each on its own line
     ports:
-      - "80:80"
+      - "10080:80"
       - "443:443"
       - "2222:22"
     volumes:
