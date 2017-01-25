@@ -104,7 +104,7 @@ services:
     restart: always
 
   nexus:
-    build: .
+    build: ./nexus
     ports:
       - "18081:8081"
     volumes:
