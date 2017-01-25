@@ -24,7 +24,7 @@ docker-compose up
 | Jenkins | http://${docker-machine ip default}:18080/ | no login required |
 | SonarQube | http://${docker-machine ip default}:19000/ | admin/admin |
 | Nexus | http://${docker-machine ip default}:18081/nexus | admin/admin123 |
-| GitLab | http://${docker-machine ip default}/ | no login required |
+| GitLab | http://${docker-machine ip default}/10080 | no login required |
 
 #### With APP
 
@@ -34,7 +34,7 @@ docker-compose up
 | Jenkins | http://${docker-machine ip default}:18080/ | no login required |
 | SonarQube | http://${docker-machine ip default}:19000/ | admin/admin |
 | Nexus | http://${docker-machine ip default}:18081/nexus | admin/admin123 |
-| GitLab | http://${docker-machine ip default}/ | no login required |
+| GitLab | http://${docker-machine ip default}/10080 | no login required |
 | Tomcat | http://${docker-machine ip default}:8080/ | admin/admin |
 | App Java | http://${docker-machine ip default}:8080/sample | admin/admin |
 

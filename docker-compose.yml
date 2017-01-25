@@ -102,3 +102,13 @@ services:
       - redminedb
       - gitlab
     restart: always
+
+  nexus:
+    build: .
+    ports:
+      - "18081:8081"
+    volumes:
+      - /opt/nexus:/sonatype-work
+    networks:
+      - prodnetwork
+    restart: always
