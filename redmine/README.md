@@ -13,18 +13,20 @@ Integration
 
 Gitlab
 
-Docker
-
-cd /opt/redmine/gitlab
-sudo git clone --mirror http://localhost/root/sample.git
+Docker Container Redmine
+```
+docker exec -it CONTAINER_ID /bin/bash
+mkdir /usr/src/redmine/repository
+cd /usr/src/redmine/repository
+git clone --mirror http://gitlab/root/sample.git
 cd sample.git
 git fetch -q --all -p
-
+```
 Cron
 
+```
 crontab -l
-
 crontab -e
 */5 * * * * app cd /opt/redmine/gitlab && git fetch -q --all -p
-
 tail -300f /var/log/syslog | grep CRON
+```
