@@ -22,6 +22,21 @@ git clone --mirror http://gitlab/root/sample.git
 cd sample.git
 git fetch -q --all -p
 ```
+
+Project
+```
+PROJECT > Configuration > Repository > New Repository
+SCM: git
+Identifier: gitlab-sample
+Path to repository: /usr/src/redmine/repository/sample.git
+```
+```
+Administration > Settings > Repositories
+Referencing keywords: issue
+Fixing keywords: Finalizada
+Applied status: Fechada
+Done: 100%
+```
 Cron
 
 ```
