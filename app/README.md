@@ -1,4 +1,7 @@
-## Sample App Java
+# Sample App Java
 
+## Getting started
 
-Once Redmine is up and running go to http://localhost:18888/sample
+```
+./run.sh
+```
