@@ -1,11 +1,5 @@
 ## Jenkins Docker Container
 
-Usage:
-```
-$ docker build -t jenkins .
-$ docker run -d -p=:18080:8080 jenkins
-```
-
 Configuration:
 
 1 Job
